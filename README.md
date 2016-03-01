@@ -27,7 +27,7 @@ For a local developer build, clone the following repositories as siblings of eac
 * https://github.com/MapStory/MapLoom
 * https://github.com/GeoNode/geonode
 * https://github.com/MapStory/geoserver-geonode-ext
-* https://github.com/MapStory/mapstory-geonode
+* https://github.com/terranodo/storyscapes
 * https://github.com/ischneider/geotools (optional - only needed for extended datetime support)
 
 Setup

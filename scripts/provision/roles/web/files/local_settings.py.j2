@@ -14,20 +14,22 @@ ALLOWED_HOSTS = {{ allowed_hosts }}
 {% endif %}
 SESSION_COOKIE_DOMAIN = '{{ session_cookie_domain }}'
 
-HAYSTACK_SEARCH = True
+# Disabled this due to the following error:
+# Failed to establish a new connection: [Errno 111] Connection refused
+HAYSTACK_SEARCH = False
 # Avoid permissions prefiltering
 SKIP_PERMS_FILTER = False
 # Update facet counts from Haystack
 HAYSTACK_FACET_COUNTS = False
-HAYSTACK_CONNECTIONS = {
-   'default': {
-       'ENGINE': 'mapstory.search.elasticsearch_backend.MapStoryElasticsearchSearchEngine',
-       'URL': 'http://127.0.0.1:9200/',
-       'INDEX_NAME': 'geonode',
-       },
-   }
+#HAYSTACK_CONNECTIONS = {
+#   'default': {
+#       'ENGINE': 'mapstory.search.elasticsearch_backend.MapStoryElasticsearchSearchEngine',
+#       'URL': 'http://127.0.0.1:9200/',
+#       'INDEX_NAME': 'geonode',
+#       },
+#   }
 SKIP_PERMS_FILTER = True
-HAYSTACK_SIGNAL_PROCESSOR = 'mapstory.search.signals.RealtimeSignalProcessor'
+#HAYSTACK_SIGNAL_PROCESSOR = 'mapstory.search.signals.RealtimeSignalProcessor'
 
 
 MAPSTORY_APPS = (

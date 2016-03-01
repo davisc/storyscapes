@@ -51,10 +51,10 @@ def map_loom_django_dev():
     """
     Creates symlinks need to develop MapLoom in our Django environment
     """
-    sudo('rm -rf /srv/git/mapstory/mapstory-geonode/mapstory/static/maploom/*')
-    sudo('ln -s /srv/git/mapstory/MapLoom/build/* /srv/git/mapstory/mapstory-geonode/mapstory/static/maploom/')
-    sudo('rm /srv/git/mapstory/mapstory-geonode/mapstory/templates/maps/maploom.html')
-    sudo('ln -s /srv/git/mapstory/MapLoom/build/maploom.html /srv/git/mapstory/mapstory-geonode/mapstory/templates/maps/maploom.html')
+    sudo('rm -rf /srv/git/mapstory/storyscapes/mapstory/static/maploom/*')
+    sudo('ln -s /srv/git/mapstory/MapLoom/build/* /srv/git/mapstory/storyscapes/mapstory/static/maploom/')
+    sudo('rm /srv/git/mapstory/storyscapes/mapstory/templates/maps/maploom.html')
+    sudo('ln -s /srv/git/mapstory/MapLoom/build/maploom.html /srv/git/mapstory/storyscapes/mapstory/templates/maps/maploom.html')
 
 
 def update(branch='master'):
@@ -69,7 +69,7 @@ def update(branch='master'):
 
     with cd('/srv/git/mapstory/geonode'):
         sudo('git pull mapstory/geonode {0}'.format(branch), user='mapstory')
-    with cd('/srv/git/mapstory/mapstory-geonode'):
+    with cd('/srv/git/mapstory/storyscapes'):
         sudo('git reset --hard', user='mapstory')
         sudo('git pull', user='mapstory')
 
@@ -82,7 +82,7 @@ def pip(download=False):
 
     """
 
-    with cd('/srv/git/mapstory/mapstory-geonode'):
+    with cd('/srv/git/mapstory/storyscapes'):
         with prefix(env.activate):
             if download:
                 sudo('pip install --download install/ --exists-action '
@@ -95,7 +95,7 @@ def collect():
 
     """
 
-    Collect static files for geonode and mapstory-geonode
+    Collect static files for geonode and storyscapes
 
     """
 
@@ -105,12 +105,12 @@ def collect():
             run('bower install --noinput')
             sudo('grunt copy', user='mapstory')
 
-        with cd('/srv/git/mapstory/mapstory-geonode/mapstory/static'):
+        with cd('/srv/git/mapstory/storyscapes/mapstory/static'):
             run('npm install')
             run('bower install --noinput')
             sudo('grunt less', user='mapstory')
 
-        with cd('/srv/git/mapstory/mapstory-geonode'):
+        with cd('/srv/git/mapstory/storyscapes'):
             sudo('python manage.py collectstatic --link --noinput --ignore node_modules', user='mapstory')
 
 
@@ -131,7 +131,7 @@ def runserver():
 
     sudo('supervisorctl stop gunicorn-django')
 
-    with cd('/srv/git/mapstory/mapstory-geonode'):
+    with cd('/srv/git/mapstory/storyscapes'):
         with prefix(env.activate):
             sudo('python manage.py runserver', user='www-data')
 
@@ -178,7 +178,7 @@ def syncdb():
 
     """
 
-    with cd('/srv/git/mapstory/mapstory-geonode'):
+    with cd('/srv/git/mapstory/storyscapes'):
         with prefix(env.activate):
             sudo('python manage.py syncdb --noinput --no-initial-data', user='mapstory')
 
@@ -201,7 +201,7 @@ def test():
 
     """
 
-    with cd('/srv/git/mapstory/mapstory-geonode'):
+    with cd('/srv/git/mapstory/storyscapes'):
         with prefix(env.activate):
             sudo('python manage.py test mapstory.tests --settings=mapstory.settings.test_settings', user='mapstory')
 

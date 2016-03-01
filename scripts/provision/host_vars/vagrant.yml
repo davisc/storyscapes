@@ -48,7 +48,7 @@ celery_always_eager: False
 session_cookie_domain: "{{ nginx_server_name }}"
 mapstory_branch: master
 top_project: /srv/git/mapstory
-mapstory_geonode: '{{ top_project }}/mapstory-geonode'
+mapstory_geonode: '{{ top_project }}/storyscapes'
 media_root: /var/lib/mapstory/media/
 uploads_root: '{{media_root}}uploads'
 django_su_pass: admin
@@ -100,9 +100,9 @@ google_oauth2_client_secret:
 
 registration_open: True
 account_open_signup: True
-account_email_confirmation_required:
+account_email_confirmation_required: False
 account_activation_days: 0
-default_from_email:
+default_from_email: noreply@example.com
 
 # Google Analytics
 
@@ -110,11 +110,11 @@ google_analytics:
 
 # Email Settings
 
-email_host:
-email_host_user:
-email_host_password:
-email_port:
-email_use_tls:
+email_host: localhost
+email_host_user: dummy
+email_host_password: dummy
+email_port: 25
+email_use_tls: True
 email_backend: 'mailer.backend.DbBackend'
 
 # Slack Settings

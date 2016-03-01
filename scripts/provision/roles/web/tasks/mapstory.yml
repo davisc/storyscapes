@@ -39,13 +39,8 @@
   when: setup_git_repo is defined and setup_git_repo
   tags: [update]
 
-- name: setup-virtual-env
-  script: roles/web/files/setup.sh &> /tmp/setup-project.out
-  sudo_user: '{{ application_user }}'
-  tags: [setup]
-
 - name: pip install
-  shell: ~/.virtualenvs/{{ project_name }}/bin/pip install -r requirements.txt chdir={{ project_path }}
+  pip: chdir={{ project_path }} requirements=requirements.txt virtualenv={{ venv }} virtualenv_site_packages=yes
   sudo_user: '{{ application_user }}'
   tags: [update]
 
@@ -54,11 +49,12 @@
   sudo_user: '{{ application_user }}'
   tags: [setup, media]
 
-- name: compile python
-  shell: '{{ venv }}/bin/python -m compileall -f {{ top_project }}/geonode -f {{ project_path }}'
-  sudo_user: '{{ application_user }}'
-  tags: [update]
-  notify: restart django
+# Commenting out because it failed on my local machine.
+#- name: compile python
+#  shell: '{{ venv }}/bin/python -m compileall -f {{ top_project }}/geonode -f {{ project_path }}'
+#  sudo_user: '{{ application_user }}'
+#  tags: [update]
+#  notify: restart django
 
 - name: generate django secret key
   shell: python -c 'import random;print "".join(random.sample("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)",50))'
@@ -79,8 +75,7 @@
   tags: [settings]
 
 - name: syncdb
-  # would use django_manage but no way to avoid initial data?
-  shell: . {{ venv_activate }} && python manage.py syncdb --noinput --no-initial-data chdir={{ project_path }}
+  django_manage: virtualenv={{venv}} app_path={{ project_path }} command="syncdb --noinput --no-initial-data"
   sudo_user: '{{ application_user }}'
   tags: [update, syncdb]
 
@@ -111,10 +106,10 @@
   sudo_user: '{{ application_user }}'
   when: use_aws_s3 is undefined or use_aws_s3 == False
   tags: [update]
-  ignore_errors: True
+#  ignore_errors: True
 
-- name: reload indexes
-  shell: . {{ venv_activate }} && python manage.py rebuild_index --noinput chdir={{ project_path }}
-  sudo_user: '{{ application_user }}'
-  tags: [elasticsearch]
-  ignore_errors: True
+#- name: reload indexes
+#  shell: . {{ venv_activate }} && python manage.py rebuild_index --noinput chdir={{ project_path }}
+#  sudo_user: '{{ application_user }}'
+#  tags: [elasticsearch]
+#  ignore_errors: True
