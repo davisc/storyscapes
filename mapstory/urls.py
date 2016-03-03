@@ -3,6 +3,7 @@ from django.conf.urls import patterns
 from django.conf.urls import url
 from django.conf.urls import include
 from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 from geonode.urls import urlpatterns
@@ -136,6 +137,7 @@ if settings.DEBUG:
     urlpatterns = urlpatterns + patterns('',
         url(r'^testing/(?P<template>.*)$', 'mapstory.views.test_view'),
     )
+    urlpatterns += staticfiles_urlpatterns()
 
 if settings.LOCAL_CONTENT:
     urlpatterns = static(settings.STATIC_URL + "assets", document_root=settings.LOCAL_ROOT + "/../../mapstory-assets", show_indexes=True) + urlpatterns
