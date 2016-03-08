@@ -17,21 +17,27 @@
                     <ul class="dropdown-menu">
                         <li><a class="pointer" ng-controller="ImportController" ng-click="open(null, '{{ STATIC_URL }}importer/partials/uploadWizard.html', '{{ STATIC_URL }}mapstory/img/mapstory-icon.png', '{{STATIC_URL}}')">{% trans "Upload StoryLayer" %}</a></li>
                         <li><a class="pointer" ng-controller="createLayerCtrl" ng-click="open('{{ STATIC_URL }}mapstory/partials/createLayerModal.html', '{{ STATIC_URL }}mapstory/img/mapstory-icon.png', '{{STATIC_URL}}')">Create Storylayer</a></li>
-                        <li><a href="{% url 'new_map' %}?tour">Compose MapStory</a></li>
+                        <!-- <li><a href="{% url 'new_map' %}?tour">Compose Mapstory</a></li> -->
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li>
+                  <a href="{% url 'getpage' 'started' %}">Get Started</a>
+                </li>
+                <li>
+                  <a href="{% url 'getpage' 'skills' %}">Get Skills</a>
+                </li>
+                <!-- <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">{% trans 'How To' %}</a>
                     <ul class="dropdown-menu">
                         <li><a href="{% url 'getpage' 'started' %}">Get Started</a></li>
                         <li><a href="{% url 'getpage' 'skills' %}">Get Skills</a></li>
                         <li><a href="{% url 'getpage' 'involved' %}">Get Involved</a></li>
                     </ul>
-                </li>
+                </li> -->
                 <li class="navbar-menu">
                     <a href="{% url "diary" %}">{% trans "Journal" %}</a>
                 </li>
-                <li class="navbar-menu">
+                <!-- <li class="navbar-menu">
                     <form class="navbar-form" id="search" action="{% url "search" %}">
                         <div class="col-md-3" style="width:285px;">
                           <div class="input-group">
@@ -41,12 +47,16 @@
                             <input id="quicksearch" type="text" class="form-control" name="keywords__slug__in">
                             {% endif %}
                             <span class="input-group-btn">
-                              <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                              <button class="btn" style="background-color:#ededed; color:#444; box-shadow: inset 0 1px 1px rgba(0,0,0,.075); border:none;" type="submit"><i class="fa fa-search"></i></button>
                             </span>
                           </div>
                         </div>
                     </form>
+                </li> -->
+                <li>
+                  <a href="{% url 'new_map' %}?tour"><i class="icon-doc"></i></a>
                 </li>
+
             </ul>
             <ul class="nav navbar-nav navbar-right" id="navbar-avatar-login">
                 <li class="dropdown">
@@ -91,9 +101,12 @@
                 {% else %}
                 <li class="navbar-menu">
                     <a role="button" id="login-icon" data-toggle="modal" data-target="#loginModal">
-                        <i class="fa fa-user"></i>
+                        <i class="icon-user"></i>
                     </a>
                 <li/>
+                <li>
+                  <a title="Help" rel="tooltip" href="http://help.mapstory.org"><i class="icon-info"></i></a>
+                </li>
                 {% endif %}
                 </li>
             </ul>
