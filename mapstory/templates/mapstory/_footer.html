@@ -1,13 +1,13 @@
-<footer class="color4" style="padding:44px 10px;width:100%;">
+<footer class="color4" style="padding:44px 10px 64px 10px;width:100%;">
     <section id="mainFooter">
         <div class="container" id="footer">
             <div class="row">
-                <div class="col-sm-9">
+                <div class="col-sm-12">
                     <div class="footerWidget">
-                        <strong> MapStory</strong> is the atlas of change that everyone can edit. We are a community, not a company, that envisions a world where everyone's knowledge can be tapped, peer reviewed, organized and shared so that we all can dramatically improve our understanding of the rich past, complex present and uncertain future we share as living beings on planet Earth.
+                        <strong> Storyscapes</strong> is the atlas of change that everyone can edit. We are a community, not a company, that envisions a world where everyone's knowledge can be tapped, peer reviewed, organized and shared so that we all can dramatically improve our understanding of the rich past, complex present and uncertain future we share as living beings on planet Earth.
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <!-- <div class="col-sm-3">
                     <div>
                         <button class="btn btn-sm btn-block btn-default">
                             <a href="{% url 'donate' %}">Help MapStory grow.<br> Make a donation.</a>
@@ -19,7 +19,7 @@
                         <a href="https://github.com/mapstory"><i class="fa fa-github"></i></a>
                         <a href="http://help.mapstory.org"><i class="fa fa-support"></i></a>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -28,9 +28,23 @@
         <div class="container">
             <hr style="margin:10px 0 10px 0">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-10">
                     <p><small>By using this site, you agree to the License, <a href="http://wiki.mapstory.org/wiki/Terms_of_Service">Terms of Use and Privacy Policy.</a> MapStory® is a registered trademark of the MapStory Foundation, Inc., a non-profit organization.</small></p>
-                    <p><small><a href="{% url 'getpage' 'started' %}">About the MapStory Foundation</a> | <a href="http://blog.mapstory.org">Blog</a> | <a href="http://wiki.mapstory.org/wiki/The_MapStory_Foundation">Contact</a> | <a href="http://wiki.mapstory.org/wiki/Developers">Developers</a> | Mobile View | <a href="http://wiki.mapstory.org/wiki/The_MapStory_Foundation#News_Coverage">Press</a> | <a href="http://wiki.mapstory.org/wiki/Terms_of_Service">Disclaimers</a> | <a href="http://wiki.mapstory.org/wiki/Community_Ethics">Values</a> | <a href="http://mapstory.myshopify.com/">Merchandise</a> | <a href="http://wiki.mapstory.org">wiki.MapStory.org</a> | <a href="http://help.mapstory.org">help.Mapstory.org</a></small></p>
+                    <p><small><a href="{% url 'getpage' 'started' %}">About the MapStory Foundation</a> | <a href="http://blog.mapstory.org">Blog</a> | <a href="http://wiki.mapstory.org/wiki/The_MapStory_Foundation">Contact</a> | <a href="http://wiki.mapstory.org/wiki/Developers">Developers</a> | Mobile View | <a href="http://wiki.mapstory.org/wiki/The_MapStory_Foundation#News_Coverage">Press</a> | <a href="http://wiki.mapstory.org/wiki/Terms_of_Service">Disclaimers</a> | <a href="http://wiki.mapstory.org/wiki/Community_Ethics">Values</a> | <a href="http://mapstory.myshopify.com/">Merchandise</a> | <a href="http://wiki.mapstory.org">wiki.MapStory.org</a> | <!--a href="http://help.mapstory.org">help.Mapstory.org</a--></small></p>
+                    <p><small><i class='flag flag-gb'></i> English | <i class='flag flag-fr'></i> Français | <i class='flag flag-es'></i> Español | <i class='flag flag-de'></i> Deutsch | <i class='flag flag-cn'></i> 中文 | <i class='flag flag-it'></i> Italiano | <i class='flag flag-ru'></i> русский </small></p>
+                </div>
+                <div class="col-sm-2">
+                        <div class="btn-group">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent;color: white;border-color:white;padding: 5px;width:150px">
+                              <i class='flag flag-gb'></i> English <span class="caret" style="border-top-color: white"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a href="#"><i class='flag flag-fr'></i> Français</a></li>
+                              <li><a href="#"><i class='flag flag-es'></i> Español</a></li>
+                              <li><a href="#"><i class='flag flag-de'></i> Deutsch</a></li>
+                              <li><a href="#"><i class='flag flag-cn'></i> 中文</a></li>
+                            </ul>
+                        </div>
                 </div>
             </div>
         </div>
