@@ -71,7 +71,7 @@ a {
 }
 
 a:hover, a:focus, a:active{
-  color: darkgray;
+  color: #333;
   text-decoration: none
 }
 
@@ -111,7 +111,7 @@ p.credits a {
   /* relative to geonode/css/base.css */
   background: url('../img/storyscapes-icon.png') no-repeat;
   background-size: 100%;
-  width: 43px;
+  width: 40px;
   height: auto;
   margin-top: 10px;
 }
@@ -187,7 +187,7 @@ p.credits a {
 /* ======== SLICES, SECTIONS, PANELS ========= */
 
 .slice {
-  padding:33px 0;
+  padding:0 0 33px 0;
   width: 100%;
   margin: 0;
   border: 0;
@@ -558,4 +558,21 @@ small {
 
 .navbar-default .navbar-nav > li > a {
   color: black;
+}
+
+.slick-track h3 {
+  color: black;
+}
+
+.slick-track h5 {
+  line-height: 22px;
+}
+
+.ng-scope h5 {
+  line-height: 22px;
+}
+
+.btn-toolbar > h4 > a > .btn:hover, .btn:focus {
+  background-color: #333;
+  color:#fff !important;
 }
