@@ -399,3 +399,26 @@ HAYSTACK_CONNECTIONS = {
        'INDEX_NAME': 'geonode',
        },
    }
+
+SOCIAL_ORIGINS = [{
+   "label":"Email",
+   "url":"mailto:?subject={name}&body={url}",
+   "css_class":"email"
+}, {
+   "label":"Facebook",
+   "url":"http://www.facebook.com/sharer.php?u={url}",
+   "css_class":"fb"
+}, {
+   "label":"Twitter",
+   "url":"https://twitter.com/share?url={url}&hashtags={hashtags}",
+   "css_class":"tw"
+},{
+   "label":"Google +",
+   "url":"https://plus.google.com/share?url={url}",
+   "css_class":"gp"
+},{
+   "label":"Pinterest",
+   "url":'<img src="{url}" />',
+   "template": 'data-pin-do="buttonBookmark" href="//www.pinterest.com/pin/create/button/"',
+   "css_class":"gp"
+}]

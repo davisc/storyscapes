@@ -119,13 +119,13 @@ body.ms-fullscreen .gxp-annotations-tip {
       data: $("#form_post_comment").serialize(),
       success: function() {
         $('#form_post_comment_div').modal('hide');
-        $('#comments_section').load(window.location.pathname + ' #comments_section', 
+        $('#comments_section').load(window.location.pathname + ' #comments_section',
             function(){$(this).children().unwrap()})
       }
     });
     return false;
   });
- 
+
 </script>
 {% include "_permissions_form_js.html" %}
 <script type="text/javascript" src="{{ STATIC_URL}}geonode/js/utils/thumbnail.js"></script>

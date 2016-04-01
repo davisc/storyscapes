@@ -276,7 +276,7 @@ class GroupDetail(DetailView):
         ctx['images'] = get_images()
         ctx['layers'] = get_group_layers(ctx['groupprofile'])
         ctx['maps'] = get_group_maps(ctx['groupprofile'])
-        
+
         return ctx
 
 
@@ -755,7 +755,7 @@ def layer_detail(request, layername, template='layers/layer_detail.html'):
         if published_form.is_valid():
             layer.is_published = published_form.cleaned_data['is_published']
             layer.save()
-            
+
     else:
         keywords_form = KeywordsForm(instance=layer)
         metadata_form = MetadataForm(instance=layer)
@@ -804,7 +804,6 @@ def layer_detail(request, layername, template='layers/layer_detail.html'):
 
     if settings.SOCIAL_ORIGINS:
         context_dict["social_links"] = build_social_links(request, layer)
-
     return render_to_response(template, RequestContext(request, context_dict))
 
 def _resolve_map(request, id, permission='base.change_resourcebase',
@@ -873,7 +872,6 @@ def map_detail(request, mapid, snapshot=None, template='maps/map_detail.html'):
 
     if settings.SOCIAL_ORIGINS:
         context_dict["social_links"] = build_social_links(request, map_obj)
-
     return render_to_response(template, RequestContext(request, context_dict))
 
 @login_required

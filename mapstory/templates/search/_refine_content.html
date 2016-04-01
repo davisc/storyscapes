@@ -1,12 +1,38 @@
 {% load i18n %}
-<hr>
-<h3><i class="fa fa-filter"></i> Refine Search</h3>
+
+<div class="panel-group" id="accordion1">
+  <div class="panel panel-default">
+      <div class="panel-heading">
+          <div class="panel-title clearfix">
+              <a data-toggle="collapse" data-parent="#accordion1" href="#whats-hot">
+                  <span class="pull-left"><i class="icon-fire"></i> What's Hot</span>
+                  <span class="pull-right"></span>
+              </a>
+          </div>
+      </div>
+      <nav id="whats-hot" class="panel-collapse collapse filter">
+          <div class="panel-body">
+              <div class="row">
+                  <div class="col-sm-12">
+                      <ul id="categories" class="nav">
+                          {% verbatim %}
+                          <h3><li><a href="" ng-click="change_api('featured');"><i class="icon-star"></i> Editor's Picks</a></li></h3>
+                          <h3><li><a href="" ng-click="set_query('order_by', '-date_joined');"><i class="icon-cloud-upload"></i> Recently Added</a></li></h3>
+                          {% endverbatim %}
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </nav>
+  </div>
+</div>
+<h3><i class="icon-magnifier"></i> Refine Search</h3>
 <div class="panel-group" id="accordion2">
     <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading" style="padding:0;">
             <div class="panel-title clearfix">
                 <a data-toggle="collapse" data-parent="#accordion2" href="#category-tab">
-                    <span class="pull-left">What</span>
+                    <span class="pull-left"><h4>Topics</h4></span>
                     <span class="pull-right"></span>
                 </a>
             </div>
@@ -16,14 +42,13 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <ul id="categories" class="nav">
-                            
                             {% verbatim %}
                             <li ng-repeat="category in categories">
                                 <a ng-init="toggle=true" ng-click="toggle_query(toggle, 'category__identifier__in', category.identifier); toggle=!toggle; active=category.id" ng-class="{active: (!toggle && (active == category.id))}">{{ category.gn_description}}
                                     <span ng-show="!toggle" class="pull-right"><i class="fa fa-check"></i></span>
-                                </a>                                
+                                </a>
                             </li>
-                            {% endverbatim %}                       
+                            {% endverbatim %}
                         </ul>
                     </div>
                 </div>
@@ -31,10 +56,10 @@
         </nav>
     </div>
     <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading" style="padding:0;">
             <div class="panel-title clearfix">
                 <a data-toggle="collapse" data-parent="#accordion2" href="#regions" ng-controller="leaflet_hack" ng-click="showMap()">
-                    <span class="pull-left">Where</span>
+                    <span class="pull-left"><h4>Places</h4></span>
                     <span class="pull-right"></span>
                 </a>
             </div>
@@ -61,7 +86,7 @@
                                 Or search by places (countries or continents):
                                 <nav class="filter">
                                     <div class="input-group search-bar">
-                                        <input name="region_search_input" id="region_search_input" ng-model="region_query" type="text" 
+                                        <input name="region_search_input" id="region_search_input" ng-model="region_query" type="text"
                                             class="form-control">
                                         <span class="input-group-btn">
                                             <button class="btn btn-primary" type="submit" id="region_search_btn" ng-click="add_search('regions', region_query, search_regions)"><i class="fa fa-plus">Add</i></button>
@@ -85,10 +110,10 @@
         </div>
     </div>
     <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading" style="padding:0;">
             <div class="panel-title clearfix">
                 <a data-toggle="collapse" data-parent="#accordion2" href="#time">
-                    <span class="pull-left">When</span>
+                    <span class="pull-left"><h4>Time Periods</h4></span>
                     <span class=“pull-right></span>
                 </a>
             </div>
@@ -107,12 +132,39 @@
             </div>
         </div>
     </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" style="padding:0;">
+            <div class="panel-title clearfix">
+                <a data-toggle="collapse" data-parent="#accordion2" href="#storytellers">
+                    <span class="pull-left"><h4>Storytellers</h4></span>
+                    <span class=“pull-right></span>
+                </a>
+            </div>
+        </div>
+        <!-- <div id="storytellers" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="row">
+                  <div class="col-sm-12">
+                      <ul id="categories" class="nav">
+                          {% verbatim %}
+                          <li ng-repeat="category in categories">
+                              <a ng-init="toggle=true" ng-click="toggle_query(toggle, 'category__identifier__in', category.identifier); toggle=!toggle; active=category.id" ng-class="{active: (!toggle && (active == category.id))}">{{ category.gn_description}}
+                                  <span ng-show="!toggle" class="pull-right"><i class="fa fa-check"></i></span>
+                              </a>
+                          </li>
+                          {% endverbatim %}
+                      </ul>
+                  </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">
         <div class="panel-title clearfix">
             <a data-toggle="collapse" data-parent="#accordion2" href="#keyword-tab">
-                <span class="pull-left">Keywords</span>
+                <span class="pull-left"><i class="icon-graph"></i>Trending Tags</span>
                 <span class="pull-right"></span>
             </a>
         </div>
@@ -125,7 +177,7 @@
                     {% verbatim %}
                         <nav class="filter">
                             <div class="input-group search-bar">
-                                <input name="keyword_search_input" id="keyword_search_input" ng-model="keyword_query" type="text" 
+                                <input name="keyword_search_input" id="keyword_search_input" ng-model="keyword_query" type="text"
                                     class="form-control">
                                 <span class="input-group-btn">
                                     <button class="btn btn-primary" type="submit" id="keyword_search_btn" ng-click="add_search('keywords', keyword_query, search_keywords)"><i class="fa fa-plus">Add</i></button>

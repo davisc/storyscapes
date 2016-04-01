@@ -29,16 +29,22 @@
                 <!-- TODO: Add Mapstory messaging functionality, has this been implemented? -->
                 <a href="{% url "message_create" resource.owner.pk %}"><span style="color:orange">message</span></a> |
                 {% for social_link in social_links %}
-                {% ifequal social_link "twitter" %}
+                {% ifequal social_link.label "Twitter" %}
                   <a href="{{ social_link.url }}"><span style="color:deepskyblue">twitter</span></a> |
                 {% endifequal %}
-                {% ifequal social_link "facebook" %}
+                {% ifequal social_link.label "Facebook" %}
                   <a href="{{ social_link.url }}"><span style="color:dodgerblue">facebook</span></a> |
                 {% endifequal %}
+                {% ifequal social_link.label "Google +" %}
+                  <a href="{{ social_link.url }}"><span style="color:green">google</span></a> |
+                {% endifequal %}
+                {% ifequal social_link.label "Pinterest" %}
+                  <a {{ social_link.template }}><span style="color:red">pinterest</span></a>
+                {% endifequal %}
                 {% endfor %}
-                {% if resource.layers %}
+                <!-- {% if resource.layers %}
                 <span style="color:green; hover: cursor;" onclick="toggle_visibility('share');">share</span> | <span style="color:#00CC99; hover: cursor;" onclick="toggle_visibility('embed');">embed</span>
-                {% endif %}
+                {% endif %} -->
               </h2>
           </div>
         </div>
@@ -139,7 +145,7 @@
             <h3 style="margin-top:-15px;margin-bottom:0px">{% trans "Rate:" %}</h3>
             {% user_rating request.user resource "layer" as user_layer_rating %}
             <div id="user_rating" class="category-layer" data-score="{{ user_layer_rating }}"></div>
-            {% endif %}        
+            {% endif %}
             </article>
             <h3 style="margin-top:-15px;margin-bottom:10px">{% trans "Average:" %} {% if resource.rating %}{{ resource.rating }}/5{% else %}Not yet rated{% endif %}</h3>
           </div>
