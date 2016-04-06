@@ -1,6 +1,6 @@
 ---
 applications:
-- name: exchange
+- name: cf-mapstory
   buildpack: https://github.com/boundlessgeo/geonode-python-buildpack
   command: null
   instances: 1
