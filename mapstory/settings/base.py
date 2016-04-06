@@ -117,6 +117,7 @@ OGC_SERVER = {
     }
 }
 
+DEBUG = os.environ['DEBUG'] == 'True'
 DEBUG_STATIC = True
 
 REGISTRATION_OPEN = True
