@@ -27,6 +27,7 @@
     - libxml2-dev
     - libxslt1-dev
     - nodejs
+    - npm
     - patch
     - python-bs4
     - python-dev
@@ -285,4 +286,3 @@
     - make install
     - ldconfig
   tags: packages
-

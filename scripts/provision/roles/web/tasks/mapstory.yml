@@ -44,10 +44,10 @@
   sudo_user: '{{ application_user }}'
   tags: [update]
 
-- name: configure media root
-  file: path={{ media_root }} owner=www-data group=www-data mode=0775 state=directory
-  sudo_user: '{{ application_user }}'
-  tags: [setup, media]
+# - name: configure media root
+#   file: path={{ media_root }} owner=www-data group=www-data mode=0775 state=directory
+#   sudo_user: '{{ application_user }}'
+#   tags: [setup, media]
 
 # Commenting out because it failed on my local machine.
 #- name: compile python

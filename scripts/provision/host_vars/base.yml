@@ -3,7 +3,7 @@
 project_name: mapstory
 
 application_name: mapstory
-application_user: mapstory
+application_user: vagrant
 
 git_repo: storyscapes
 
@@ -15,7 +15,7 @@ project_path: '{{ top_project }}/{{ git_repo }}'
 
 
 # don't change these
-venv: /home/mapstory/.virtualenvs/{{ project_name }}
+venv: /home/{{ application_user }}/.virtualenvs/{{ project_name }}
 venv_activate: '{{ venv }}/bin/activate'
 
 update_apt_cache: yes
