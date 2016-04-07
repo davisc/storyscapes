@@ -25,7 +25,7 @@ from geonode.settings import *
 #
 # General Django development settings
 #
-
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SITENAME = 'MapStory'
 
 # Defines the directory that contains the settings file as the LOCAL_ROOT
@@ -177,6 +177,9 @@ if ENABLE_SOCIAL_LOGIN:
         #'mapstory.social_signals.audit_user',
     )
 
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 #@todo remove this hack once maploom can deal with other config
 # have to put this after local_settings or any adjustments to OGC_SERVER will

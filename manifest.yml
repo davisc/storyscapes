@@ -1,6 +1,7 @@
 ---
 applications:
-- name: cf-mapstory
+- name: cf-storyscapes
+  domain: cfapps.io
   buildpack: https://github.com/boundlessgeo/geonode-python-buildpack
   command: null
   instances: 1
